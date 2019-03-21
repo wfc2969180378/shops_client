@@ -1,6 +1,6 @@
 <template>
   <div class="msite">
-    <header-top title="海口鸡公煲（海口琼山区店）">
+    <header-top :title="address.name">
       <router-link
         class="header_search"
         slot="left"
@@ -149,6 +149,7 @@
     import 'swiper/dist/css/swiper.min.css'
     import HeaderTop from '../../components/HeaderTop/HeaderTop'
     import ShopList from '../../components/ShopList/ShopList'
+    import { mapState } from 'vuex'
 
     export default {
         name: "MSite",
@@ -162,12 +163,20 @@
           }
         },
         mounted() {
+
+          this.$store.dispatch('getCategorys');
+
+
+          // 创建一个Swiper实例对象，来实现轮播
           new Swiper('.swiper-container', {
             pagination: {
               loop: true,
               el: '.swiper-pagination'
             }
           })
+        },
+        computed: {
+          ...mapState(['address','categorys'])
         }
     }
 </script>
