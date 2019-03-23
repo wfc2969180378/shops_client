@@ -16,7 +16,7 @@ export default function ajax(url, data={}, type='GET') {
         dataStr += key + '=' + data[key];
       });
       if(dataStr　!== '') {
-        dataStr = data.substring(0, dataStr.lastIndexOf('&'));
+        dataStr = dataStr.substring(0, dataStr.lastIndexOf('&'));
         url = url + '?' + dataStr;
       }
       // 发送get请求
