@@ -25,24 +25,28 @@
 
           startClasses () {
 
-            const {score} = this
-            const scs = []
 
-            const scoreInteger = Math.floor(score)
+            // const { score } = this;
+            // const scs = [];
+            //
+            // // 向scs这中添加CLASS_ON
+            // const scoreInteger = Math.floor(score);
+            // for (let i = 0;i < scoreInteger;i++) {
+            //   scs.push(CLASS_ON);
+            // }
+            //
+            // // 向scs中添加CLASS_HALF
+            // if (score * 10- scoreInteger*10 >= 5) {
+            //   scs.push(CLASS_OFF);
+            // }
+            //
+            // // 向scs中添加CLASS_OFF
+            // while(scoreInteger < 5){
+            //   scs.push(CLASS_OFF);
+            // }
+            //
+            // return scs;
 
-            for (let i = 0; i < scoreInteger; i++) {
-              scs.push(CLASS_ON)
-            }
-
-            if (score*10 - scoreInteger*10 >=5 ) {
-              scs.push(CLASS_HALF)
-            }
-
-            while (scoreInteger < 5) {
-              scs.push(CLASS_OFF)
-            }
-
-            return scs
 
             // const {score} = this
             // console.log(this);
