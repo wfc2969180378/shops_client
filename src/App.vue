@@ -1,32 +1,31 @@
 <template>
   <div id="app">
-    <router-view />
-    <FooterGuide v-show="$route.meta.showFooter"/>
+    <router-view/>
+    <FooterGuide v-show="$route.meta.showFooter"></FooterGuide>
   </div>
 </template>
 
 <script>
-    import FooterGuide from './components/FooterGuide/FooterGuide'
-    import {mapActions} from 'vuex'
+  import { mapActions } from 'vuex'
+  import FooterGuide from './components/FooterGuide/FooterGuide'
+  export default {
+    name: 'App',
+    components: {
+      FooterGuide
+    },
+    mounted() {
 
-
-    export default {
-        components: {
-          FooterGuide
-        },
-        methods: {
-          ...mapActions(['getAddress']),
-        },
-        mounted() {
-          this.getAddress();
-        }
+      this.getAddress()
+      console.log(this.getShops())
+    },
+    methods: {
+      ...mapActions(['getAddress','getShops'])
     }
+  }
 </script>
 
 <style lang="stylus" ref="stylesheet/stylus">
-
   #app
-    width 100%
     height 100%
-    background #fcfcfc
+    width 100%
 </style>

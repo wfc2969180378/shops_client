@@ -1,57 +1,61 @@
-/*
-  路由器对象模块
-* */
-
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import MSite from '../pages/MSite/MSite'
-import Search from '../pages/Search/Search'
-import Order from '../pages/Order/Order'
-import Profile from '../pages/Profile/Profile'
-import Login from '../pages/Login/Login'
+import Router from 'vue-router'
+// import MSite from '../views/Msite/Msite'
+// import Order from '../views/Order/Order'
+// import Search from '../views/Search/Search'
+// import Profile from '../views/Profile/Profile'
+import Login from '../views/Login/Login'
+const MSite = () => import('../views/MSite/MSite')
+const Order = () => import('../views/Order/Order')
+const Search = () => import('../views/Search/Search')
+const Profile = () => import('../views/Profile/Profile')
 
+Vue.use(Router)
 
-// 声明使用插件
-Vue.use(VueRouter);
-
-export default new VueRouter({
-  // 所有路由
-  routes:[
+export default new Router({
+  routes: [
     {
       path: '/msite',
+      name: 'MSite',
       component: MSite,
       meta: {
         showFooter: true
       }
-    },
-    {
-      path: '/search',
-      component: Search,
-      meta: {
-        showFooter: true
-      }
-    },
-    {
+    },{
       path: '/order',
+      name: 'Order',
       component: Order,
       meta: {
         showFooter: true
       }
     },
     {
+      path: '/search',
+      name: 'Search',
+      component: Search,
+      meta: {
+        showFooter: true
+      }
+    },
+    {
       path: '/profile',
-      component: Profile
+      name: 'Profile',
+      component: Profile,
+      meta: {
+        showFooter: true
+      }
     },
     {
       path: '/login',
+      name: 'Login',
       component: Login,
       meta: {
         showFooter: false
       }
     },
     {
-      path: '/',
-      redirect: '/msite'
+      redirect: '/msite',
+      path: '/'
     }
   ]
 })

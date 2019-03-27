@@ -96,3 +96,11 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.icon1 {
+  font-size: 30px !important;
+  display: inline-block !important;
+  position: relative !important;
+  left: 0 !important;
+}
+
