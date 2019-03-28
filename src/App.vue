@@ -16,10 +16,11 @@
     mounted() {
 
       this.getAddress()
-      console.log(this.getShops())
+      this.getUserInfo()
+      this.getShops()
     },
     methods: {
-      ...mapActions(['getAddress','getShops'])
+      ...mapActions(['getAddress','getUserInfo','getShops'])
     }
   }
 </script>

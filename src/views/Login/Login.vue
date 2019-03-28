@@ -57,7 +57,7 @@
 
 <script>
     import AlertTip from '../../components/AlertTip/AlertTip'
-    import {reqSendCode,reqSmsLogin} from "../../api";
+    import {reqSendCode,reqSmsLogin,reqPwdLogin} from "../../api";
 
     export default {
         name: 'page-tab-container',
@@ -142,6 +142,7 @@
 
                result = await reqSmsLogin(phone, code)
             } else if (this.active === 'tab-container2')  { // 密码验证
+              const {name,pwd,captcha} = this
               if (!this.name) {
                 // 用户名必须指定
                 this.showPopup('用户名必须指定')
@@ -155,6 +156,8 @@
                 this.showPopup('验证码必须指定')
                 return
               }
+              // 发送ajax请求密码登陆
+              result = await reqPwdLogin({name, pwd, captcha})
             }
             // 停止计时
             if (this.computeTime) {

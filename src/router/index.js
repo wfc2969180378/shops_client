@@ -5,6 +5,12 @@ import Router from 'vue-router'
 // import Search from '../views/Search/Search'
 // import Profile from '../views/Profile/Profile'
 import Login from '../views/Login/Login'
+import Shop from '../views/Shop/Shop'
+import ShopGoods from '../views/Shop/ShopGoods/ShopGoods'
+import ShopInfos from '../views/Shop/ShopInfos/ShopInfos'
+import ShopRatings from '../views/Shop/ShopRatings/ShopRatings'
+
+
 const MSite = () => import('../views/MSite/MSite')
 const Order = () => import('../views/Order/Order')
 const Search = () => import('../views/Search/Search')
@@ -16,14 +22,12 @@ export default new Router({
   routes: [
     {
       path: '/msite',
-      name: 'MSite',
       component: MSite,
       meta: {
         showFooter: true
       }
     },{
       path: '/order',
-      name: 'Order',
       component: Order,
       meta: {
         showFooter: true
@@ -31,7 +35,6 @@ export default new Router({
     },
     {
       path: '/search',
-      name: 'Search',
       component: Search,
       meta: {
         showFooter: true
@@ -39,7 +42,6 @@ export default new Router({
     },
     {
       path: '/profile',
-      name: 'Profile',
       component: Profile,
       meta: {
         showFooter: true
@@ -47,11 +49,35 @@ export default new Router({
     },
     {
       path: '/login',
-      name: 'Login',
       component: Login,
       meta: {
         showFooter: false
       }
+    },
+    {
+      path: '/shop',
+      component: Shop,
+      meta: {
+        showFooter: false
+      },
+      children: [
+        {
+          path: '/shop/goods',
+          component: ShopGoods
+        },
+        {
+          path: '/shop/infos',
+          component: ShopInfos
+        },
+        {
+          path: '/shop/ratings',
+          component: ShopRatings
+        },
+        {
+          path: '',
+          redirect: '/shop/goods'
+        }
+      ]
     },
     {
       redirect: '/msite',

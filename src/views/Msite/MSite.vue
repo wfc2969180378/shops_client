@@ -1,14 +1,15 @@
 <template>
     <div>
       <HeaderTop :title="address.name">
-        <router-link to="a" target=""
+        <router-link target=""
           slot="left" class="header_search"
+                     to="/search"
         >
           <i class="iconfont icon-sousuo"></i>
         </router-link>
         <router-link target="" slot="right"
         class="header_login"
-                     to="/login"
+                     :to="userInfo._id?'/userinfo': '/login'"
         >
          <span class="header_login_text" v-if="!userInfo._id">
            登录|注册
