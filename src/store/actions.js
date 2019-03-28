@@ -6,14 +6,16 @@ import {
   RECEIVE_ADDRESS,
   RECEIVE_CATEGORIES,
   RECEIVE_SHOPS,
-  RECEIVE_USER_INFO
+  RECEIVE_USER_INFO,
+  RECEIVE_SEARCH_SHOPS, RESET_USER_INFO
 } from './mutation-types'
 
 import {
   reqAddress,
   reqCategories,
   reqShops,
-  reqUserInfo
+  reqUserInfo,
+  reqSearchShops, reqLogout
 } from '../api'
 
 
@@ -62,6 +64,22 @@ export default {
     if (result.code === 0) {
       const userInfo = result.data
       commit(RECEIVE_USER_INFO, {userInfo})
+    }
+  },
+  // 异步获取搜索商家信息
+  async searchShops({commit,state}, keyword) {
+    const geohash = state.latitude + ',' + state.longitude
+    const result = await reqSearchShops(geohash,keyword)
+    if(result.code === 0) {
+      const searchShops = result.data
+      commit(RECEIVE_SEARCH_SHOPS,{ searchShops })
+    }
+  },
+  // 异步退出
+  async logout({commit}) {
+    const result = await reqLogout()
+    if(result.code === 0) {
+      commit(RESET_USER_INFO)
     }
   }
 }
