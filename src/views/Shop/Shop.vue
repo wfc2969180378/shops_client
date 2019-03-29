@@ -21,6 +21,9 @@
     export default {
         components: {
           ShopHeader
+        },
+        mounted() {
+           this.$store.dispatch('getShopInfos')
         }
     }
 </script>

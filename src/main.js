@@ -7,6 +7,8 @@ import store from './store'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 
+import './mock/mockServer'  //　加载mockServer即可
+
 Vue.config.productionTip = false
 Vue.use(Mint)
 

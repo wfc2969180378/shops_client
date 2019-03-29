@@ -7,7 +7,10 @@ import {
   RECEIVE_CATEGORIES,
   RECEIVE_SHOPS,
   RECEIVE_USER_INFO,
-  RECEIVE_SEARCH_SHOPS, RESET_USER_INFO
+  RECEIVE_SEARCH_SHOPS, RESET_USER_INFO,
+  RECEIVE_SHOP_GOODS,
+  RECEIVE_SHOP_RATINGS,
+  RECEIVE_SHOP_INFOS
 } from './mutation-types'
 
 import {
@@ -15,7 +18,11 @@ import {
   reqCategories,
   reqShops,
   reqUserInfo,
-  reqSearchShops, reqLogout
+  reqSearchShops,
+  reqLogout,
+  reqShopGoods,
+  reqShopRatings,
+  reqShopInfos
 } from '../api'
 
 
@@ -80,6 +87,35 @@ export default {
     const result = await reqLogout()
     if(result.code === 0) {
       commit(RESET_USER_INFO)
+    }
+  },
+
+  // 获取商品列表
+  async getShopGoods({commit},callback) {
+    const　result = await reqShopGoods()
+    if (result.code === 0) {
+      const goods = result.data
+      commit(RECEIVE_SHOP_GOODS,{goods})
+      // 数据更新了，通知一下组件
+      callback && callback()
+    }
+  },
+  // 获取商家信息
+  async getShopInfos({commit}) {
+    const result = await reqShopInfos()
+    if (result.code === 0) {
+      const infos = result.data
+      commit(RECEIVE_SHOP_INFOS, {infos})
+    }
+  },
+  // 异步获取商家评价列表
+  async getShopRatings({commit}, callback) {
+    const result = await reqShopRatings()
+    if (result.code === 0) {
+      const ratings = result.data
+      commit(RECEIVE_SHOP_RATINGS,{ratings})
+      // 数据更新了，通知一下组件
+      callback && callback()
     }
   }
 }
