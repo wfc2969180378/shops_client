@@ -64,7 +64,9 @@
               <p>距离</p>
             </li>
           </ul>
-          <h3 class="infos-bulletin">公告</h3>
+          <h3 class="infos-bulletin">
+            <span>公告</span>
+          </h3>
           <p class="bulletin-content">{{ infos.bulletin }}</p>
         </div>
       </mt-popup>
@@ -215,9 +217,11 @@
             font-size 12px
           &.shops-content
             display block
+            font-size 12px
             width 180px
           &.shops-length
             position relative
+            font-size 12px
             &::after
               position absolute
               display block
@@ -253,7 +257,7 @@
         .infos-items
           li
             float left
-            padding-right 15px
+            width 20%
             h3
               font-weight bold
               margin-bottom 10px
@@ -263,29 +267,19 @@
               font-size 12px
               text-align center
         .infos-bulletin
-          text-align center
-          padding 15px 0 10px
-          color #7e8c8d
-          font-size 14px
           position relative
-          &::before
-            position absolute
-            content: ''
-            display block
-            width 18px
-            background rgba(158,115,255,0.47)
-            height 1px
-            left 106px
-            top 20px
-          &::after
-            position absolute
-            content: ''
-            display block
-            width 18px
-            background rgba(158,115,255,0.47)
-            height 1px
-            right 106px
-            top 20px
+          text-align center
+          margin 15px auto 15px
+          width 85px
+          background-image linear-gradient(90deg, #fff, #333 50%, #fff)
+          background-size 100% 1px
+          background-position 50%
+          background-repeat no-repeat
+          > span
+              font-size 12px
+              padding 0 6px
+              color #999
+              background-color #fff
         .bulletin-content
           font-size 14px
           line-height 20px
@@ -303,10 +297,5 @@
           overflow-y scroll
           li
             width 100%
-
-
-
-
-
 
 </style>
